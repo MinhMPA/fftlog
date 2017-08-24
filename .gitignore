@@ -12,6 +12,7 @@
 # Ignore executable files
 *.[oa]
 *.out
+*.so
 
 # Ignore Python bytecode file
 *.pyc
@@ -24,3 +25,5 @@ build/
 # Ignore swap files
 *~
 .DS_Store
+
+
