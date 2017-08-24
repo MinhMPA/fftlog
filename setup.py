@@ -4,7 +4,7 @@ from numpy.distutils.core import setup, Extension
 setup(name = "fftlog",
       version = "1.0",
       description = "Wrapper (f2py) for Fortran FFTLog (Version 13 March 2000) by Andrew J.S. Hamilton",
-      author = 'Dieter Werthmüller',
+      author = 'Dieter Werthmueller',
       author_email = 'dieter.werthmuller@gmx.ch',
       license='CC0',
       url='https://github.com/prisae/fftlog',

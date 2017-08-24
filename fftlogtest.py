@@ -88,12 +88,12 @@
 
 # In[1]:
 
+
 import fftlog
 import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 
-get_ipython().magic('matplotlib inline')
 plt.style.use('ggplot')
 mpl.rcParams.update({'font.size': 16})
 
@@ -104,12 +104,13 @@ mpl.rcParams.update({'font.size': 16})
 
 # In[2]:
 
+
 # Range of periodic interval
-logrmin = -4
-logrmax = 4
+logrmin = -4.0
+logrmax = 4.0
 
 # Number of points (Max 4096)
-n = 64
+n = 256 
 
 # Order mu of Bessel function
 mu = 0
@@ -132,6 +133,7 @@ tdir = 1
 
 # In[3]:
 
+
 # Central point log10(r_c) of periodic interval
 logrc = (logrmin + logrmax)/2
 
@@ -149,6 +151,7 @@ dlnr = dlogr*np.log(10.0)
 
 # In[4]:
 
+
 r = 10**(logrc + (np.arange(1, n+1) - nc)*dlogr)
 ar = r**(mu + 1)*np.exp(-r**2/2.0)
 
@@ -157,6 +160,7 @@ ar = r**(mu + 1)*np.exp(-r**2/2.0)
 
 # In[5]:
 
+
 kr, wsave, ok = fftlog.fhti(n, mu, dlnr, q, kr, kropt)
 print('fftlog.fhti: ok =', bool(ok), '; New kr = ', kr)
 
@@ -164,6 +168,7 @@ print('fftlog.fhti: ok =', bool(ok), '; New kr = ', kr)
 # ### Call `fftlog.fht` (or `fftlog.fhtl`)
 
 # In[6]:
+
 
 logkc = np.log10(kr) - logrc
 print('Central point in k-space at log10(k_c) = ', logkc)
@@ -180,6 +185,7 @@ ak = fftlog.fht(ar.copy(), wsave, tdir)
 
 # In[7]:
 
+
 k = 10**(logkc + (np.arange(1, n+1) - nc)*dlogr)
 theo = k**(mu + 1)*np.exp(-k**2/2.0)
 
@@ -187,6 +193,7 @@ theo = k**(mu + 1)*np.exp(-k**2/2.0)
 # ### Plot result
 
 # In[8]:
+
 
 plt.figure(figsize=(16,8))
 
@@ -219,6 +226,7 @@ plt.show()
 # ### Print values
 
 # In[9]:
+
 
 print('           k                 a(k)       k^(mu+1) exp(-k^2/2)')
 print('----------------------------------------------------------------')
